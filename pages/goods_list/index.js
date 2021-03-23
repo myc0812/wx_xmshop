@@ -36,6 +36,15 @@ Page({
   onLoad: function (options) {
     this.queryParms.cid = options.cid;
     this.getGoodsList()
+
+    wx.showLoading({
+      title: '加载中',
+    })
+
+    setTimeout(() => {
+      wx.hideLoading();
+    }, 2000)
+
   },
 
   // 获取商品列表数据

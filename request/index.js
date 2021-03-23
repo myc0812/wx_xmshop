@@ -1,4 +1,13 @@
+let ajaxTimes = 0
+
 export const request = (params) => {
+  ajaxTimes++
+  // 显示加载中效果
+  wx.showLoading({
+    title: '加载中',
+    mask: true
+  });
+
   // 定义公共Url
   const baseUrl = 'https://api-hmugo-web.itheima.net/api/public/v1'
 
@@ -11,6 +20,13 @@ export const request = (params) => {
       },
       fail: err => {
         reject(err)
+      },
+      complete: () => {
+        ajaxTimes--
+        if (ajaxTimes === 0) {
+          wx.hideLoading();
+        }
+        // 关闭正在加载的图标
       }
     })
   })
