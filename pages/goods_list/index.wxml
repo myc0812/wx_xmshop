@@ -1,2 +1,7 @@
-<!--pages/goods_list/index.wxml-->
-<text>pages/goods_list/index.wxml</text>
+<!-- pages/goods_list/index.wxml -->
+<searchInput></searchInput>
+<tabs tabs="{{tabs}}" bind:tabItemChange="handleTabsItemChange">
+  <block wx:if="{{tabs[0].isActive}}">0</block>
+  <block wx:elif="{{tabs[1].isActive}}">1</block>
+  <block wx:else>2</block>
+</tabs>
