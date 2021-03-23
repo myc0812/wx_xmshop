@@ -3,10 +3,12 @@
 <tabs tabs="{{tabs}}" bind:tabItemChange="handleTabsItemChange">
   <block wx:if="{{tabs[0].isActive}}">
     <view class="first_tab">
-      <navigator class="goods_item" wx:for="{{goodsList}}" wx:key="goods_id">
+      <navigator class="goods_item" wx:for="{{goodsList}}" wx:key="goods_id"
+                 url="/pages/goods_detail/index?goods_id={{item.goods_id}}">
         <!-- 左侧图片容器 -->
         <view class="goods_image_wrap">
-          <image mode="widthFix" src="{{item.goods_small_logo ? item.goods_small_logo : 'https://ww1.sinaimg.cn/large/007rAy9hgy1g24by9t530j30i20i2glm.jpg'}}" />
+          <image mode="widthFix"
+                 src="{{item.goods_small_logo ? item.goods_small_logo : 'https://ww1.sinaimg.cn/large/007rAy9hgy1g24by9t530j30i20i2glm.jpg'}}"/>
         </view>
         <!-- 右侧商品容器 -->
         <view class="goods_info_wrap">
