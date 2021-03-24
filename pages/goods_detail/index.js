@@ -12,6 +12,9 @@ Page({
     goodsObj: []
   },
 
+  // 全局变量
+  GoosInfo: [],
+
   /**
    * 生命周期函数--监听页面加载
    */
@@ -29,6 +32,7 @@ Page({
         goods_id
       }
     })
+    this.GoosInfo = res.data.message
     this.setData({
       goodsObj: {
         goods_name: res.data.message.goods_name,
@@ -39,5 +43,17 @@ Page({
         pics: res.data.message.pics
       }
     })
+  },
+  // 点击预览大图
+  handlePreviewImage(e) {
+    // 先构造预览图片的数据
+    const urls = this.GoosInfo.pics.map(v => v.pics_mid)
+    // 接收传递过来的url
+    const current = e.currentTarget.dataset.url
+    wx.previewImage({
+      current,
+      urls
+    });
+
   }
 })
