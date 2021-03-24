@@ -1,3 +1,7 @@
+page {
+  padding-bottom: 90rpx;
+}
+
 .detail_swiper {
   swiper {
     height: 65vw;
@@ -50,5 +54,59 @@
     color: var(--themeColor);
     font-weight: 600;
     padding: 20rpx;
+  }
+}
+
+.btm_tool {
+  position: fixed;
+  display: flex;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 90rpx;
+  background-color: #fff;
+  border-top: 1px solid #ccc;
+
+  .tool_item {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 24rpx;
+    position: relative;
+
+    button {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+    }
+  }
+
+  .btn_cart {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #ffa400;
+    color: #fff;
+    font-size: 30rpx;
+    font-weight: 600;
+  }
+
+  .btn_buy {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #f9544c;
+    color: #fff;
+    font-size: 30rpx;
+    font-weight: 600;
   }
 }

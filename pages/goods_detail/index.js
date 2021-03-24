@@ -55,5 +55,26 @@ Page({
       urls
     });
 
+  },
+  // 加入购物车
+  handleCartAdd() {
+    // 获取缓存中的购物车数组
+    let cart = wx.getStorageSync('cart') || []
+    // 判断商品对象是否存在与购物车数组中
+    let index = cart.findIndex(v => v.goods_id === this.GoosInfo.goods_id)
+    if (index === -1) {
+      this.GoosInfo.num = 1
+      cart.push(this.GoosInfo)
+    } else {
+      cart[index].num++
+    }
+    // 把购物车添加会缓存中
+    wx.setStorageSync('cart', cart);
+    // 弹窗提示
+    wx.showToast({
+      title: '加入购物车成功',
+      icon: 'success',
+      mask: true
+    })
   }
 })
