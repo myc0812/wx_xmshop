@@ -3,7 +3,8 @@ import {
   getSetting,
   chooseAddress,
   openSetting,
-  showModal
+  showModal,
+  showToast
 } from "../../utils/asyncWX.js";
 
 Page({
@@ -123,5 +124,30 @@ Page({
       // 设置回缓存中
       this.setCart(cart)
     }
+  },
+  // 点击结算
+  async handlePay() {
+    // 判断收货地址
+    const {
+      address,
+      totalNum
+    } = this.data
+    if (!address.userName) {
+      await showToast({
+        title: '您还没有选择收货地址'
+      })
+      return
+    }
+    // 判断用户是否选中商品
+    if (totalNum === 0) {
+      await showToast({
+        title: '您没有选购商品'
+      })
+      return
+    }
+    // 跳转到支付页面
+    wx.navigateTo({
+      url: '/pages/pay/index'
+    })
   }
 })
